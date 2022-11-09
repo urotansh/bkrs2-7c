@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'groups/new'
-  get 'groups/index'
-  get 'groups/create'
-  get 'groups/edit'
-  get 'groups/update'
-  get 'groups/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :users
 
@@ -23,5 +17,7 @@ Rails.application.routes.draw do
   end
   
   get "searches" => "searches#search"
+  
+  resources :groups, except: [:destroy] 
   
 end
