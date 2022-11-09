@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
   end
 
   def index
+    @book = Book.new
+    @groups = Group.all
   end
   
   def edit
