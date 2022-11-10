@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+  
   def new
     @group = Group.new
   end
@@ -38,6 +40,14 @@ class GroupsController < ApplicationController
   
   def group_params
     params.require(:group).permit(:name, :introduction, :image)
+  end
+  
+  def is_matching_login_user
+    owner_id = Group.find(params[:id]).owner_id.to_i
+    login_user_id = current_user.id
+    if owner_id != login_user_id
+      redirect_to groups_path
+    end
   end
   
 end
