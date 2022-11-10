@@ -25,7 +25,9 @@
                 <%= image_tag group.get_image, size: '50x50' %>
               </td>
               <td>
-                <%= group.name %>
+                <%= link_to group_path(group) do %>
+                  <%= group.name %>
+                <% end %>
               </td>
               <td>
                 <%= group.introduction %>
